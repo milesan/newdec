@@ -1,0 +1,45 @@
+@layer components {
+  .pixel-art-border {
+    clip-path: polygon(
+      0 4px, 4px 0,
+      calc(100% - 4px) 0, 100% 4px,
+      100% calc(100% - 4px), calc(100% - 4px) 100%,
+      4px 100%, 0 calc(100% - 4px)
+    );
+  }
+
+  .pixel-art-shadow {
+    box-shadow: 
+      0 2px 0 rgba(0, 0, 0, 0.2),
+      0 4px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .pixel-art-text {
+    font-family: 'VT323', monospace;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  /* Matrix theme variants */
+  .pixel-art-border.matrix-theme {
+    @apply border-garden-matrix;
+  }
+
+  .pixel-art-shadow.matrix-theme {
+    box-shadow: 
+      0 2px 0 rgba(76, 217, 100, 0.2),
+      0 4px 0 rgba(76, 217, 100, 0.1);
+  }
+
+  .pixel-art-text.matrix-theme {
+    @apply text-garden-matrix;
+    text-shadow: 2px 2px 0 rgba(76, 217, 100, 0.2);
+  }
+
+  .pixel-art-glow {
+    animation: textGlow 2s ease-in-out infinite;
+  }
+
+  .pixel-art-glow.matrix-theme {
+    @apply text-garden-matrix;
+  }
+}

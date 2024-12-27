@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Base styles for all input types */
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="date"],
+  textarea,
+  select {
+    @apply bg-black border-2 border-[#FFBF00]/30 w-full md:w-2/3 mx-auto;
+    clip-path: polygon(
+      0 4px, 4px 4px, 4px 0,
+      calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px,
+      100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px),
+      calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px),
+      0 calc(100% - 4px)
+    );
+    border-bottom-width: 2px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Placeholder styling */
+  input::placeholder,
+  textarea::placeholder {
+    color: #FFBF00;
+    opacity: 0.3;
+  }
+
+  /* Hover states */
+  input:hover,
+  textarea:hover,
+  select:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-bottom-color: rgba(255, 191, 0, 0.5);
+  }
+
+  /* Focus states */
+  input:focus,
+  textarea:focus,
+  select:focus {
+    @apply border-[#FFBF00] ring-1 ring-[#FFBF00]/50;
+    background: black;
+    box-shadow: 0 0 15px rgba(255, 191, 0, 0.1);
+    border-bottom-width: 2px;
+    border-bottom-color: #FFBF00;
+    outline: none;
+  }
+
+  /* Container wrapper for pixel border effect */
+  .pixel-border {
+    position: relative;
+    background: transparent;
+    padding: 2px;
+    width: 100%;
+    max-width: 66.666667%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .pixel-border {
+      max-width: 100%;
+    }
+  }
+
+  .pixel-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #FFBF00;
+    opacity: 0.3;
+    padding: 2px;
+    clip-path: polygon(
+      0 4px, 4px 4px, 4px 0,
+      calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px,
+      100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px),
+      calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px),
+      0 calc(100% - 4px)
+    );
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .pixel-border:hover::before {
+    opacity: 0.4;
+  }
+
+  .pixel-border:focus-within::before {
+    opacity: 1;
+  }
+
+  .pixel-border > * {
+    background: black;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    padding: 0.75rem;
+    clip-path: polygon(
+      0 4px, 4px 4px, 4px 0,
+      calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px,
+      100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px),
+      calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px),
+      0 calc(100% - 4px)
+    );
+  }
+
+  /* Checkbox styling */
+  input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid rgba(255, 191, 0, 0.3);
+    background: black;
+    cursor: pointer;
+    position: relative;
+    clip-path: polygon(
+      0 4px, 4px 4px, 4px 0,
+      calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px,
+      100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px),
+      calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px),
+      0 calc(100% - 4px)
+    );
+  }
+
+  input[type="checkbox"]:checked {
+    background: #FFBF00;
+    border-color: #FFBF00;
+  }
+
+  input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    color: black;
+    font-size: 0.875rem;
+    font-weight: bold;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Form field spacing */
+  .form-field {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Label styling */
+  label {
+    color: #FFBF00;
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  /* Required field indicator */
+  label[required]::after {
+    content: ' *';
+    color: #FFBF00;
+    opacity: 0.7;
+  }
+
+  /* Matrix rain animation */
+  @keyframes matrixRain {
+    0% {
+      opacity: 1;
+      transform: translateY(-100%);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  }
+
+  /* Text glow animation */
+  @keyframes textGlow {
+    0%, 100% {
+      text-shadow: 0 0 10px #FFBF00;
+    }
+    50% {
+      text-shadow: 0 0 20px #FFBF00;
+    }
+  }
+}

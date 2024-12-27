@@ -1,0 +1,1 @@
+<content>// This component is no longer needed</content>

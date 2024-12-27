@@ -1,0 +1,119 @@
+@layer components {
+  .pixel-corners {
+    position: relative;
+    clip-path: polygon(
+      0 4px, 4px 0,
+      calc(100% - 4px) 0, 100% 4px,
+      100% calc(100% - 4px), calc(100% - 4px) 100%,
+      4px 100%, 0 calc(100% - 4px)
+    );
+  }
+
+  .pixel-corners::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 4px;
+    right: 4px;
+    height: 2px;
+    background: currentColor;
+    opacity: 0.2;
+  }
+
+  .pixel-corners:hover::after {
+    height: 3px;
+    opacity: 0.3;
+  }
+
+  .pixel-corners.selected::after {
+    height: 4px;
+    opacity: 0.4;
+  }
+
+  .pixel-corners:focus-within {
+    box-shadow: 0 0 20px currentColor;
+  }
+
+  .pixel-corners:hover {
+    box-shadow: 0 0 15px currentColor;
+  }
+
+  .ascii-art {
+    font-family: 'VT323', monospace;
+    white-space: pre;
+    text-shadow: 0 0 10px currentColor;
+  }
+
+  .retro-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+
+  .retro-input {
+    @apply bg-garden-dark/30 border-2 font-mono;
+    @apply focus:outline-none focus:ring-2;
+    @apply caret-current;
+  }
+
+  .retro-radio {
+    @apply appearance-none w-6 h-6 border-2;
+    @apply checked:border-2;
+    @apply focus:ring-2 focus:ring-opacity-50;
+  }
+
+  /* Matrix theme variants */
+  .pixel-corners.matrix-theme::after {
+    background: theme('colors.garden.matrix');
+  }
+
+  .pixel-corners.matrix-theme:focus-within {
+    box-shadow: 0 0 20px rgba(76, 217, 100, 0.2);
+  }
+
+  .pixel-corners.matrix-theme:hover {
+    box-shadow: 0 0 15px rgba(76, 217, 100, 0.15);
+  }
+
+  .ascii-art.matrix-theme {
+    text-shadow: 0 0 10px rgba(76, 217, 100, 0.3);
+  }
+
+  .retro-glow.matrix-theme {
+    text-shadow: 0 0 10px rgba(76, 217, 100, 0.3);
+  }
+
+  .retro-input.matrix-theme {
+    @apply border-garden-matrix;
+    @apply focus:ring-garden-matrix;
+  }
+
+  .retro-radio.matrix-theme {
+    @apply border-garden-matrix;
+    @apply checked:bg-garden-matrix checked:border-garden-matrix;
+    @apply focus:ring-garden-matrix;
+  }
+
+  .section-divider {
+    @apply w-full h-px my-8;
+    background: linear-gradient(
+      to right,
+      transparent,
+      currentColor,
+      transparent
+    );
+    opacity: 0.2;
+  }
+
+  .section-divider::before,
+  .section-divider::after {
+    content: '▼';
+    @apply absolute left-1/2 -translate-x-1/2 text-xs opacity-20;
+  }
+
+  .section-divider::before {
+    @apply -top-2;
+  }
+
+  .section-divider::after {
+    @apply -bottom-2;
+  }
+}

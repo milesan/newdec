@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-stone-50 text-stone-800;
+  }
+}
+
+@layer components {
+  .pixel-corners {
+    position: relative;
+    clip-path: polygon(
+      0 4px, 4px 0,
+      calc(100% - 4px) 0, 100% 4px,
+      100% calc(100% - 4px), calc(100% - 4px) 100%,
+      4px 100%, 0 calc(100% - 4px)
+    );
+  }
+
+  .pixel-corners::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 4px;
+    right: 4px;
+    height: 2px;
+    background: currentColor;
+    opacity: 0.2;
+    transition: all 0.3s ease;
+  }
+
+  .pixel-corners:hover::after {
+    height: 3px;
+    opacity: 0.3;
+  }
+
+  .pixel-corners.selected::after {
+    height: 4px;
+    opacity: 0.4;
+  }
+
+  .tree-pattern {
+    background-image: radial-gradient(circle at 2px 2px, rgba(20, 83, 45, 0.05) 2px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  .squiggle-path {
+    stroke-dasharray: 150;
+    stroke-dashoffset: 0;
+    animation: squiggle 4s linear infinite;
+  }
+
+  .week-box {
+    @apply relative p-4 bg-white border-2 border-stone-200 shadow-sm transition-all duration-300;
+    aspect-ratio: 1.5;
+    clip-path: polygon(
+      0 4px, 4px 0,
+      calc(100% - 4px) 0, 100% 4px,
+      100% calc(100% - 4px), calc(100% - 4px) 100%,
+      4px 100%, 0 calc(100% - 4px)
+    );
+  }
+
+  .week-box::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 4px;
+    right: 4px;
+    height: 2px;
+    @apply bg-emerald-900;
+    opacity: 0.2;
+    transition: all 0.3s ease;
+  }
+
+  .week-box:hover::after {
+    height: 3px;
+    opacity: 0.3;
+  }
+
+  .week-box.selected {
+    @apply border-emerald-600 shadow-lg;
+  }
+
+  .week-box.selected::after {
+    height: 4px;
+    opacity: 0.4;
+  }
+
+  .week-box .week-date {
+    @apply font-display text-xl;
+  }
+
+  .week-box .week-label {
+    @apply font-mono text-sm text-stone-500;
+  }
+
+  .connecting-line {
+    @apply absolute h-0.5 bg-emerald-600/30;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+  }
+
+  .connecting-line.left {
+    right: 100%;
+    width: 1rem;
+  }
+
+  .connecting-line.right {
+    left: 100%;
+    width: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    body {
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
+      overflow-x: hidden;
+    }
+    
+    html {
+      height: -webkit-fill-available;
+    }
+  }
+}
+
+@keyframes squiggle {
+  from {
+    stroke-dashoffset: 150;
+  }
+  to {
+    stroke-dashoffset: -150;
+  }
+}

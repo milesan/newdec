@@ -1,0 +1,47 @@
+@keyframes squiggle {
+  from {
+    stroke-dashoffset: 150;
+  }
+  to {
+    stroke-dashoffset: -150;
+  }
+}
+
+@keyframes pixelBorder {
+  0%, 100% {
+    clip-path: polygon(
+      0 4px, 4px 0,
+      calc(100% - 4px) 0, 100% 4px,
+      100% calc(100% - 4px), calc(100% - 4px) 100%,
+      4px 100%, 0 calc(100% - 4px)
+    );
+  }
+  50% {
+    clip-path: polygon(
+      0 5px, 5px 0,
+      calc(100% - 5px) 0, 100% 5px,
+      100% calc(100% - 5px), calc(100% - 5px) 100%,
+      5px 100%, 0 calc(100% - 5px)
+    );
+  }
+}
+
+@keyframes matrixRain {
+  0% {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px currentColor;
+  }
+  50% {
+    text-shadow: 0 0 20px currentColor;
+  }
+}

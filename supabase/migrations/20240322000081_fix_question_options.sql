@@ -1,0 +1,191 @@
+-- First, clean up all existing questions
+TRUNCATE application_questions;
+
+-- Insert all questions with proper formatting
+INSERT INTO application_questions (
+  order_number,
+  text,
+  type,
+  options,
+  required,
+  section
+) VALUES 
+(1, 'What is your email address?', 
+ 'email',
+ NULL,
+ true, 
+ 'intro'),
+
+(2, 'Choose a password for your account', 
+ 'password',
+ NULL,
+ true, 
+ 'intro'),
+
+(3, 'I consent to my data being stored and reviewed for the process of this residency.', 
+ 'radio', 
+ '["Yes", "No"]'::jsonb,
+ true, 
+ 'intro'),
+
+(4, 'First Name', 
+ 'text',
+ NULL,
+ true, 
+ 'personal'),
+
+(5, 'Last Name', 
+ 'text',
+ NULL,
+ true, 
+ 'personal'),
+
+(6, 'So, where aren''t you from?', 
+ 'text',
+ NULL,
+ false, 
+ 'personal'),
+
+(7, 'Who, if anyone, referred you?', 
+ 'text',
+ NULL,
+ false, 
+ 'personal'),
+
+(8, 'Applying as a muse or artisan?', 
+ 'radio', 
+ '["Yes, I want to be a muse", "No, I prefer to be a regular guest"]'::jsonb,
+ true, 
+ 'stay'),
+
+(9, 'Are you applying with someone else?',
+ 'radio',
+ '["Yes!", "No, applying solo"]'::jsonb,
+ true,
+ 'stay'),
+
+(10, 'What is your WhatsApp number?', 
+ 'tel',
+ NULL,
+ false, 
+ 'contact'),
+
+(11, 'Social media presence (optional)', 
+ 'text',
+ NULL,
+ false, 
+ 'personal'),
+
+(12, 'Where are you at in your life right now?', 
+ 'textarea',
+ NULL,
+ true, 
+ 'personal'),
+
+(13, 'Why do you want to spend time at the Garden?', 
+ 'textarea',
+ NULL,
+ true, 
+ 'personal'),
+
+(14, 'What photo(s) capture your essence?', 
+ 'file',
+ NULL,
+ false, 
+ 'personal'),
+
+(15, 'What have you created that you''re proud of?', 
+ 'textarea',
+ NULL,
+ true, 
+ 'personal'),
+
+(16, 'If someone hurt your feelings, did they do something wrong?', 
+ 'textarea',
+ NULL,
+ true, 
+ 'philosophy'),
+
+(17, 'What''s a recent belief you changed?', 
+ 'textarea',
+ NULL,
+ true, 
+ 'philosophy'),
+
+(18, 'If we really knew you, what would we know?', 
+ 'textarea',
+ NULL,
+ true, 
+ 'philosophy'),
+
+(19, 'What are you working on about yourself?', 
+ 'textarea',
+ NULL,
+ true, 
+ 'philosophy'),
+
+(20, 'How do you prefer getting to know new people?', 
+ 'textarea',
+ NULL,
+ true, 
+ 'philosophy'),
+
+(21, 'What questions do you like to ask strangers?', 
+ 'textarea',
+ NULL,
+ true, 
+ 'philosophy'),
+
+(22, 'How do you identify yourself?', 
+ 'textarea',
+ NULL,
+ true, 
+ 'philosophy'),
+
+(23, 'Are there any topics you won''t discuss?', 
+ 'textarea',
+ NULL,
+ true, 
+ 'philosophy'),
+
+(24, 'What''s your favorite conspiracy theory?', 
+ 'textarea',
+ NULL,
+ false, 
+ 'philosophy'),
+
+(25, 'What do you believe that most people don''t?', 
+ 'textarea',
+ NULL,
+ true, 
+ 'philosophy'),
+
+(26, 'What does astrology mean to you?', 
+ 'textarea',
+ NULL,
+ false, 
+ 'philosophy'),
+
+(27, 'If some robots are mechanics and some mechanics are purple, must some robots be purple?', 
+ 'textarea',
+ NULL,
+ true, 
+ 'philosophy'),
+
+(28, 'Do you believe an old book gives you claim to a piece of land?', 
+ 'textarea',
+ NULL,
+ true, 
+ 'philosophy'),
+
+(29, 'COVID vaccination status and thoughts?', 
+ 'textarea',
+ NULL,
+ true, 
+ 'health'),
+
+(30, 'Your MBTI type (if known)', 
+ 'text',
+ NULL,
+ false, 
+ 'personal');

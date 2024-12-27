@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .stay2-container {
+    @apply bg-[#F4F0E8] text-[#37352F];
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .stay2-month-nav {
+    @apply flex items-center gap-2 px-3 py-1.5 font-serif text-lg transition-all duration-300 
+           bg-white shadow-sm border-2 border-stone-200;
+    clip-path: polygon(
+      0 4px, 4px 0,
+      calc(100% - 4px) 0, 100% 4px,
+      100% calc(100% - 4px), calc(100% - 4px) 100%,
+      4px 100%, 0 calc(100% - 4px)
+    );
+  }
+
+  .stay2-month-nav:hover {
+    @apply bg-stone-50;
+    border-color: rgba(6, 95, 70, 0.1);
+    box-shadow: 
+      0 2px 4px rgba(6, 95, 70, 0.05),
+      0 0 0 1px rgba(6, 95, 70, 0.1);
+  }
+
+  .stay2-month-nav.active {
+    @apply bg-stone-50;
+    border-color: rgba(6, 95, 70, 0.15);
+    box-shadow: 
+      0 2px 4px rgba(6, 95, 70, 0.1),
+      0 0 0 1px rgba(6, 95, 70, 0.15);
+  }
+
+  .stay2-week-box {
+    @apply relative p-4 bg-white transition-all duration-300;
+    aspect-ratio: 1.5;
+    clip-path: polygon(
+      0 4px, 4px 0,
+      calc(100% - 4px) 0, 100% 4px,
+      100% calc(100% - 4px), calc(100% - 4px) 100%,
+      4px 100%, 0 calc(100% - 4px)
+    );
+    border: 1px solid rgba(6, 95, 70, 0.1);
+    box-shadow: 
+      0 1px 2px rgba(6, 95, 70, 0.05),
+      0 0 0 1px rgba(6, 95, 70, 0.05);
+  }
+
+  .stay2-week-box::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 4px;
+    right: 4px;
+    height: 2px;
+    background: rgba(6, 95, 70, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .stay2-week-box:hover {
+    border-color: rgba(6, 95, 70, 0.15);
+    box-shadow: 
+      0 2px 4px rgba(6, 95, 70, 0.1),
+      0 0 0 1px rgba(6, 95, 70, 0.1);
+  }
+
+  .stay2-week-box:hover::after {
+    height: 2px;
+    background: rgba(6, 95, 70, 0.2);
+  }
+
+  .stay2-week-box.selected {
+    border-color: rgba(6, 95, 70, 0.3);
+    box-shadow: 
+      0 4px 6px rgba(6, 95, 70, 0.1),
+      0 0 0 1px rgba(6, 95, 70, 0.2);
+  }
+
+  .stay2-week-box.selected::after {
+    height: 3px;
+    background: rgba(6, 95, 70, 0.3);
+  }
+
+  .stay2-squiggle {
+    stroke-dasharray: 150;
+    stroke-dashoffset: 0;
+    animation: stay2-squiggle 3s linear infinite;
+  }
+
+  .stay2-summary-date {
+    @apply font-serif text-lg tracking-wide opacity-85;
+  }
+
+  .stay2-summary-details {
+    @apply font-mono text-sm tracking-wide opacity-85;
+  }
+
+  .stay2-tree-pattern {
+    background-image: radial-gradient(circle at 2px 2px, rgba(20, 83, 45, 0.05) 2px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  .stay2-accommodation-card {
+    @apply relative overflow-hidden transition-all duration-300;
+    clip-path: polygon(
+      0 4px, 4px 0,
+      calc(100% - 4px) 0, 100% 4px,
+      100% calc(100% - 4px), calc(100% - 4px) 100%,
+      4px 100%, 0 calc(100% - 4px)
+    );
+  }
+
+  .stay2-accommodation-card.selected {
+    @apply border-2 border-emerald-600;
+    box-shadow: 
+      0 4px 6px rgba(6, 95, 70, 0.1),
+      0 0 0 2px rgba(6, 95, 70, 0.1),
+      inset 0 0 0 1px rgba(6, 95, 70, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .stay2-accommodation-card.selected::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(6, 95, 70, 0.2);
+    pointer-events: none;
+    clip-path: polygon(
+      0 4px, 4px 0,
+      calc(100% - 4px) 0, 100% 4px,
+      100% calc(100% - 4px), calc(100% - 4px) 100%,
+      4px 100%, 0 calc(100% - 4px)
+    );
+  }
+
+  .stay2-booking-summary {
+    @apply lg:sticky lg:top-8 transition-all duration-300;
+  }
+}
+
+@keyframes stay2-squiggle {
+  from {
+    stroke-dashoffset: 150;
+  }
+  to {
+    stroke-dashoffset: -150;
+  }
+}

@@ -1,0 +1,53 @@
+@layer components {
+  .garden-application {
+    @apply min-h-screen bg-garden-dark;
+  }
+
+  .garden-application-header {
+    @apply flex items-center justify-between mb-16;
+  }
+
+  .garden-application-title {
+    @apply text-5xl font-display mb-2;
+  }
+
+  .garden-application-progress {
+    @apply relative w-full h-1;
+  }
+
+  .garden-application-progress-bar {
+    @apply h-full transition-all duration-300;
+  }
+
+  .garden-application-progress.matrix-theme {
+    @apply bg-garden-matrix/20;
+  }
+
+  .garden-application-progress-bar.matrix-theme {
+    @apply bg-garden-matrix;
+  }
+
+  .garden-application-section {
+    @apply space-y-12;
+  }
+
+  .garden-application-nav {
+    @apply fixed bottom-8 right-8 left-8 flex justify-between items-center max-w-2xl mx-auto;
+  }
+
+  .garden-application-nav-button {
+    @apply px-6 py-3 text-lg font-display transition-all;
+  }
+
+  .garden-application-nav-button.matrix-theme {
+    @apply text-garden-matrix hover:text-garden-matrix/90;
+  }
+
+  .garden-application-submit {
+    @apply group flex items-center gap-2 px-8 py-4 text-xl font-display transition-colors pixel-corners relative;
+  }
+
+  .garden-application-submit.matrix-theme {
+    @apply bg-garden-matrix text-garden-dark hover:bg-garden-matrix/90;
+  }
+}
